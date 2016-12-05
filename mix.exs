@@ -27,6 +27,6 @@ defmodule Adventofcode2016.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:benchee, "~> 0.6.0"}]
   end
 end

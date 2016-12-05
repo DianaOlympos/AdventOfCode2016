@@ -1,9 +1,8 @@
 defmodule Adventofcode2016.Solution.Day5 do
   alias Adventofcode2016.Solution.Helper
 
-  def solve_part1() do
-    "day5.txt"
-    |> Helper.load_input()
+  def solve_part1(input) do
+    input
     |> String.trim()
     |> Stream.iterate(&(&1))
     |> Stream.with_index()
@@ -11,7 +10,6 @@ defmodule Adventofcode2016.Solution.Day5 do
     |> Stream.map(&(:crypto.hash(:md5, &1)))
     |> Stream.flat_map(&extracting_member_part1/1)
     |> Enum.take(8)
-    |> IO.puts()
   end
 
   def extracting_member_part1(<<0::integer-size(20), x::integer-size(4), _rest::bitstring>>) do
@@ -23,9 +21,8 @@ defmodule Adventofcode2016.Solution.Day5 do
 
   def into_io_list({string, index}), do: [string, Integer.to_string(index)]
 
-  def solve_part2() do
-    "day5.txt"
-    |> Helper.load_input()
+  def solve_part2(input) do
+    input
     |> String.trim()
     |> Stream.iterate(&(&1))
     |> Stream.with_index()
@@ -33,8 +30,6 @@ defmodule Adventofcode2016.Solution.Day5 do
     |> Stream.map(&(:crypto.hash(:md5, &1)))
     |> Stream.map(&extracting_member_part2/1)
     |> Enum.reduce_while(%{}, &build_result/2)
-    |> IO.puts()
-
   end
 
   def extracting_member_part2(<<0::integer-size(21), position::integer-size(3), x::integer-size(4), _rest::bitstring>>) do
@@ -59,7 +54,6 @@ defmodule Adventofcode2016.Solution.Day5 do
     map
     |> Map.to_list()
     |> Enum.sort(&(elem(&1,0) < elem(&2, 0)))
-    |> IO.inspect()
     |> Enum.map(&(elem(&1,1)))
   end
 
