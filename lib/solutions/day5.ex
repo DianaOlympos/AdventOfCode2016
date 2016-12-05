@@ -40,11 +40,18 @@ defmodule Adventofcode2016.Solution.Day5 do
   def extracting_member_part2(_), do: nil
 
   def build_result({index, character}, acc) when index in 0..7 do
-    size_map = length(Map.keys(acc))
+    new_map =
+      acc
+      |> Map.put_new(index, character)
+    size_map =
+      new_map
+      |> Map.keys()
+      |> length()
+
     if size_map == 8 do
-      {:halt, extract_result(acc)}
+      {:halt, extract_result(new_map)}
     else
-      {:cont, Map.put_new(acc, index, character)}
+      {:cont, new_map}
     end
   end
 
