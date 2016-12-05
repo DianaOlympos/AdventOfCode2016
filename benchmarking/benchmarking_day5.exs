@@ -1,4 +1,3 @@
-Application.ensure_all_started(:adventofcode2016)
 
 Benchee.run(%{
   "naive part 1" => &Adventofcode2016.Solution.Day5.solve_part1/1,
