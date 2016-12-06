@@ -8,7 +8,6 @@ defmodule Adventofcode2016.Solution.Day6 do
       |> Enum.map(&String.to_charlist/1)
       |> Enum.reduce([], &extract_most_used_char/2)
       |> Enum.map(&Enum.max_by(&1, fn {_char, count} -> count end))
-      |> IO.inspect()
       |> Enum.map(&elem(&1, 0))
       |> IO.puts
   end
